@@ -92,6 +92,10 @@ spawnPipes2();
 }
 else if(gameState===END){
    
+fill("black")
+textSize(32)
+text("Game Over 'Press' >                < to Restart",width/2-368,height/2+10)
+
     restart.visible=true
    
     ground.velocityX=0
