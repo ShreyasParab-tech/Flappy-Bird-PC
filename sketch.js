@@ -10,6 +10,8 @@ var PLAY = 1;
 var END = 0;
 var gameState = PLAY;
 
+var touches = []
+
 function preload(){
     birdimg= loadAnimation("bird1.png","bird2.png")
     birdDead=loadImage("bird1.png")
@@ -68,9 +70,10 @@ if(ground.x<500){
 bird.velocityY=2
 bird.velocityY=bird.velocityY+2
 
-if(keyDown("space")){
+if(touches.length>0 || keyDown("space")){
     bird.y=bird.y-12
     jump.play()
+    touches = []
 }
 
 if(bird.isTouching(spawnPipesGroup)){
@@ -106,8 +109,9 @@ text("Game Over 'Press' >                < to Restart",width/2-368,height/2+10)
      spawnPipesGroup2.setVelocityXEach(0);    
 bird.velocityY=12
 
-if(mousePressedOver(restart)){
+if(touches.length>0||mousePressedOver(restart)){
 reset()
+touches = []
 }
 }
 
